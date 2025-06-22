@@ -1,10 +1,9 @@
-version: "3.9"
 services:
   whisper:
     build: .
     runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - .:/app
-    command: python3 transcribe.py
+      - ./videos:/app/videos
+      - ./audios:/app/audios
+      - ./transcricoes:/app/transcricoes
+    command: python3 processarVideos.py
